@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <EditText
+        android:id="@+id/etUsernameSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:hint="  Enter username"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <EditText
+        android:id="@+id/etEmailSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUsernameSignup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:hint="  Enter email"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPasswordOuterSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_below="@+id/etEmailSignup" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasswordSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:hint="  Password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSubmitSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPasswordOuterSignup"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:backgroundTint="#80AC2D2D"
+        android:text="Submit" />
+</RelativeLayout>

@@ -46,7 +46,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnSubmitSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPostImage"

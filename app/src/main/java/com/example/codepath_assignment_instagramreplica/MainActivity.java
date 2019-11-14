@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
-        btnSubmit = findViewById(R.id.btnSubmit);
+        btnSubmit = findViewById(R.id.btnSubmitSignup);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
