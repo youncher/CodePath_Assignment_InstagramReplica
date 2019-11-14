@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 // Login screen for user to enter Username/Password
 public class LoginActivity extends AppCompatActivity {
@@ -62,26 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (e != null) {
                     Toast.makeText(LoginActivity.this, "Login error", Toast.LENGTH_LONG).show();
                     Log.e(TAG, "Issue with login");
-                    e.printStackTrace();
-                    return;
-                }
-                // Navigate to new activity if the user has signed in properly
-                goMainActivity();
-            }
-        });
-    }
-
-    private void signup(String username, String password) {
-
-        // Use Parse to check if user was signed in successfully
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-
-            // ParseException e will be null if login succeeeded, not null otherwise
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e != null) {
-                    Toast.makeText(LoginActivity.this, "Signup error", Toast.LENGTH_LONG).show();
-                    Log.e(TAG, "Issue with signup");
                     e.printStackTrace();
                     return;
                 }
