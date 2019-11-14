@@ -3,13 +3,19 @@ package com.example.codepath_assignment_instagramreplica;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+
 // Login screen for user to enter Username/Password
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG  = "LoginActivity";
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
@@ -33,6 +39,22 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String username, String password) {
-        // TODO: navigate to new activity if the user has signed in properly
+
+        // Use Parse to check if user was signed in successfully
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+
+            // ParseException e will be null if login succeeeded, not null otherwise
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with login");
+                    e.printStackTrace();
+                    return;
+                }
+            }
+
+            // Navigate to new activity if the user has signed in properly
+            //goMainActivity();
+        });
     }
 }
