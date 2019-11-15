@@ -26,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (ParseUser.getCurrentUser() != null) {
+            Log.i(TAG, "Found session: " + ParseUser.getCurrentUser());
+            goMainActivity();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 

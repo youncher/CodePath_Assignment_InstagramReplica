@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 Log.d(TAG, "Save Success");
+                Toast.makeText(MainActivity.this, "Posted!", Toast.LENGTH_SHORT).show();
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
             }
