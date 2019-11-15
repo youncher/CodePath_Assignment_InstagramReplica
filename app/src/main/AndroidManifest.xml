@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignupActivity"></activity>
+
+        <activity
+            android:name=".SignupActivity"
+            android:label="Signup">
+        </activity>
+
         <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -24,8 +29,14 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".MainActivity" /> <!-- Adds MainActivity to app -->
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="New Post"/> <!-- Adds MainActivity to app -->
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="InstagramReplica Login">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

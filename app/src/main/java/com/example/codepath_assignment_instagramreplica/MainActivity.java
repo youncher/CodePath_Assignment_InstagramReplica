@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,6 +73,25 @@ public class MainActivity extends AppCompatActivity {
                 savePost(description, user, photoFile);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate menu; this adds items to the action bar if it is present
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
+            // Logout icon has been selected
+            ParseUser.logOut();
+            Log.d(TAG, "User logged out. Logged in user is now: " + ParseUser.getCurrentUser()); // this will now be null
+            goLoginActivity();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void launchCamera() {
@@ -170,4 +192,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void goLoginActivity() {
+        Log.d(TAG, "Navigating to Login Activity");
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+
+        // Clears Login from backstack so when user clicks back, they are now directed back to Main Activity witout relogging in
+        finish();
+    }
+
 }
