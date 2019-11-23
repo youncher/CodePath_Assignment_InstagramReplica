@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.codepath_assignment_instagramreplica.Post;
 import com.example.codepath_assignment_instagramreplica.PostsAdapter;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostsFragment extends Fragment {
-
+    private SwipeRefreshLayout swipeContainer;
     private static final String TAG = "PostsFragment";
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
@@ -38,6 +39,22 @@ public class PostsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        swipeContainer = view.findViewById(R.id.swipe_container);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                queryPosts();
+            }
+        });
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         rvPosts = view.findViewById(R.id.rvPosts);
 
         // create the data source
@@ -53,7 +70,7 @@ public class PostsFragment extends Fragment {
     }
 
     protected void queryPosts() {
-        ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
+        ParseQuery<Post> postQuery = new ParseQuery<>(Post.class);
         postQuery.include(Post.KEY_USER); // Adding to query to get user in the query
         postQuery.setLimit(20);
         postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
@@ -66,12 +83,12 @@ public class PostsFragment extends Fragment {
                     e.printStackTrace();
                     return;
                 }
+                mPosts.clear();
                 mPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
-
+                swipeContainer.setRefreshing(false);
                 for (int i = 0; i < posts.size(); i++) {
                     Post post = posts.get(i);
-                    //Log.d(TAG, "Post " + (i + 1) + " by " + post.getUser().getUsername() + " Description: " + post.getDescription());
                     Log.d(TAG, "Post " + (i + 1) + ": " + post.getDescription());
                 }
             }
