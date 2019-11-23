@@ -5,11 +5,11 @@
 ## User Stories Part 2
 
 - [x] User can view the last 20 posts submitted to "Instagram".
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram".
-- [x] The user should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram".
+- [x] The user should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using fragments and a Bottom Navigation View.
 
 Future features to implement:
-
+- [x] Added navigation menu specific title.
 - [ ] Style the feed to look like the real Instagram feed.
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [ ] Show the username and creation time for each post.
@@ -26,7 +26,7 @@ Future features to implement:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='TODO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough_To Be Created Later' />
+<img src='VideoDemo_NavigationMenus.gif' title='Video Walkthrough' width='250' alt='Video Navigation Menu Walkthrough' />
 
 ## User Stories Part 1
 
