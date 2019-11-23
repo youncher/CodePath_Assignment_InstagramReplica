@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.codepath_assignment_instagramreplica.fragments.ComposeFragment;
 import com.example.codepath_assignment_instagramreplica.fragments.PostsFragment;
+import com.example.codepath_assignment_instagramreplica.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                     default:
-                        fragment = new ComposeFragment(); // TODO UPDATE
+                        fragment = new ProfileFragment();
                         //Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         break;
                 }
